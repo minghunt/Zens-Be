@@ -7,7 +7,6 @@ const JokeController = {
             const joke = (await JokeService.getJoke(votedJokes)) || {
                 message: "Come back another day!",
             };
-            res.setHeader('Access-Control-Allow-Origin', '*');
   // Thiết lập các header khác tùy thuộc vào yêu cầu của bạn
             res.json({ message: "Joke got successfully!", joke: joke });
         } catch (error) {
