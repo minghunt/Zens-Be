@@ -7,6 +7,7 @@ const JokeController = {
             const joke = (await JokeService.getJoke(votedJokes)) || {
                 message: "Come back another day!",
             };
+            res.header
             res.json({ message: "Joke got successfully!", joke: joke });
         } catch (error) {
             res.status(500).json({ error: error.message });
