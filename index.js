@@ -14,6 +14,10 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Headers'],
   credentials: true, // Allow credentials (cookies)
 };
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin');
+  next();
+});
 
 app.use(cors(corsOptions));
 // Middleware
