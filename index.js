@@ -11,7 +11,7 @@ const PORT = process.env.APP_PORT || 8080;
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://zens-fe.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin','Access-Control-Allow-Headers'],
   credentials: true, // Allow credentials (cookies)
 };
 
