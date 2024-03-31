@@ -17,7 +17,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 // Middleware
-
+app.options('*', cors(corsOptions));
 app.use(bodyParser.json());
 app.use(cookieParser());
 // Routes
