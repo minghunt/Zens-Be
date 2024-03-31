@@ -8,13 +8,18 @@ const cors=require('cors')
 const app = express();
 const PORT = process.env.APP_PORT || 8080;
 
-
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://zens-fe.vercel.app,'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Headers'],
+  credentials: true, // Allow credentials (cookies)
+};
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin');
   next();
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
 // Middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
