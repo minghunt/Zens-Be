@@ -14,12 +14,13 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin','access-control-allow-origin'],
   credentials: true, // Allow credentials (cookies)
 };
+
+
+app.use(cors(corsOptions));
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   next();
 });
-
-app.use(cors(corsOptions));
 // Middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
