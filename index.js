@@ -15,7 +15,7 @@ const corsOptions = {
   credentials: true, // Allow credentials (cookies)
 };
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   next();
 });
