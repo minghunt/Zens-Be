@@ -8,23 +8,19 @@ const cors=require('cors')
 const app = express();
 const PORT = process.env.APP_PORT || 8080;
 
-const corsOptions = {
-  origin: ['http://localhost:3000', 'https://zens-fe.vercel.app,'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin','Access-Control-Allow-Headers'],
-  credentials: true, // Allow credentials (cookies)
-};
 app.use((req, res, next) => {
-  // Thiết lập header 'Access-Control-Allow-Origin' để cho phép truy cập từ mọi domain
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  // Thiết lập các header khác tùy thuộc vào yêu cầu của bạn
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Các phương thức HTTP được phép
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allow the HTTP methods specified
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'); // Allow the headers specified
+  res.setHeader('Access-Control-Allow-Credentials', true); // Allow cookies to be sent with the requests
 
-  // Gọi next để chuyển điều khiển đến middleware tiếp theo
-  next();
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+  } else {
+      next();
+  }
 });
-app.use(cors(corsOptions));
 // Middleware
 
 app.use(bodyParser.json());
