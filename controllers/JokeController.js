@@ -9,8 +9,6 @@ const JokeController = {
             };
             res.setHeader('Access-Control-Allow-Origin', '*');
   // Thiết lập các header khác tùy thuộc vào yêu cầu của bạn
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); 
             res.json({ message: "Joke got successfully!", joke: joke });
         } catch (error) {
             res.status(500).json({ error: error.message });
