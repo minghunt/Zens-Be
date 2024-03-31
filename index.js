@@ -8,15 +8,13 @@ const cors=require('cors')
 const app = express();
 const PORT = process.env.APP_PORT || 8080;
 
-const corsOptions = {
-  credentials: true, // Allow credentials (cookies)
-};
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin');
   next();
 });
 
-app.use(cors(corsOptions));
+app.use(cors());
 // Middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
