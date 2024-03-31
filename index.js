@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.APP_PORT || 8080;
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Allow requests from your frontend origin
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allow the HTTP methods specified
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'); // Allow the headers specified
   res.setHeader('Access-Control-Allow-Credentials', true); // Allow cookies to be sent with the requests
