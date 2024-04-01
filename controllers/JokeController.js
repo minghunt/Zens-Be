@@ -1,13 +1,22 @@
 const JokeService = require("../services/JokeService");
 
 const JokeController = {
+    async getAllJokes(req, res) {
+        try {
+            const jokes = (await JokeService.getAllJoke())
+
+            res.json({ message: "Joke got successfully!", jokes: jokes });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
     async getJoke(req, res) {
         try {
             const votedJokes = req.cookies.votedJokes || [];
             const joke = (await JokeService.getJoke(votedJokes)) || {
                 message: "Come back another day!",
             };
-  // Thiết lập các header khác tùy thuộc vào yêu cầu của bạn
+
             res.json({ message: "Joke got successfully!", joke: joke });
         } catch (error) {
             res.status(500).json({ error: error.message });
